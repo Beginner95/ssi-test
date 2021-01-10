@@ -59,10 +59,10 @@
                                     <td>{{ $car->transmission }}</td>
                                     <td>{{ $car->rental_price }}</td>
                                     <td>
-                                        <a href="{{ route('car-models.edit', $car->id) }}" class="btn btn-info btn-sm float-left mr-1">
+                                        <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-info btn-sm float-left mr-1">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <form action="{{ route('car-models.destroy', $car->id) }}" method="post" class="float-left">
+                                        <form action="{{ route('cars.destroy', $car->id) }}" method="post" class="float-left">
                                             @csrf
                                             @method('DELETE')
                                             <button
