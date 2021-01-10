@@ -40,4 +40,12 @@ class Car extends Model
         return null;
     }
 
+
+    public function getImage(): string
+    {
+        if (!$this->file) {
+            return asset("no-image.png");
+        }
+        return asset("uploads/{$this->file}");
+    }
 }
