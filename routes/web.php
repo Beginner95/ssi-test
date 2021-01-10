@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
+use \App\Http\Controllers\Admin\CarController;
 use \App\Http\Controllers\Admin\CarModelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -14,6 +15,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
     Route::resource('brands', BrandController::class);
     Route::resource('car-models', CarModelController::class);
+    Route::resource('cars', CarController::class);
 });
 
 Route::group(['middleware' => 'guest'], function () {
