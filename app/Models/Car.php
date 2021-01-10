@@ -28,6 +28,6 @@ class Car extends Model
 
     public function model(): HasOne
     {
-        return $this->hasOne(CarModel::class);
+        return $this->hasOne(CarModel::class, 'id', 'car_model_id');
     }
 }
