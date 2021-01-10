@@ -8,6 +8,7 @@ use App\Models\Car;
 use App\Models\CarModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarController extends Controller
 {
@@ -28,10 +29,7 @@ class CarController extends Controller
     public function store(CarRequest $request): RedirectResponse
     {
         $data = $request->all();
-        //По хорошему надо перенести в отдельный класс
-        if ($request->hasFile('file')) {
-            $data['file'] = $request->file('file')->store('');
-        }
+        $data['file'] = Car::uploadImage($request);
 
         Car::create($data);
 
