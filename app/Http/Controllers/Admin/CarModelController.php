@@ -19,7 +19,7 @@ class CarModelController extends Controller
 
     public function create()
     {
-        $brands = Brand::get();
+        $brands = Brand::pluck('name', 'id');
 
         return view('admin.car_models.create', compact('brands'));
     }
@@ -33,7 +33,7 @@ class CarModelController extends Controller
 
     public function edit(CarModel $carModel)
     {
-        $brands = Brand::get();
+        $brands = Brand::pluck('name', 'id');
 
         return view('admin.car_models.edit', compact('carModel', 'brands'));
     }

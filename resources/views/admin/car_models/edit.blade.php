@@ -26,9 +26,9 @@
                                     <label for="brand_id">Название марки</label>
                                     <select class="custom-select rounded-0 @error('brand_id') is-invalid @enderror" name="brand_id" id="brand_id">
                                         <option value="">-Выберите марку-</option>
-                                        @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}" @if ($carModel->brand->id == $brand->id) selected @endif>
-                                                {{ $brand->name }}
+                                        @foreach($brands as $key => $brand)
+                                            <option value="{{ $key }}" @if ($carModel->brand->id == $key) selected @endif>
+                                                {{ $brand }}
                                             </option>
                                         @endforeach
                                     </select>
