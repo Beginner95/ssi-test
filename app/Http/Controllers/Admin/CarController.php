@@ -36,14 +36,20 @@ class CarController extends Controller
         return redirect()->route('cars.index')->with('success', 'Автомобиль успешно добавлен');
     }
 
-    public function edit($id)
+    public function edit(Car $car)
     {
-        //
+        $models = CarModel::pluck('name', 'id');
+
+        return view('admin.cars.edit', compact('car', 'models'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Car $car, CarRequest $request): RedirectResponse
     {
-        //
+        $data = $request->all();
+        $data['file'] = Car::uploadImage($request, $car->file);
+        $car->update($data);
+
+        return redirect()->route('cars.index')->with('Автомобиль успешно обновлен');
     }
 
     public function destroy($id)
