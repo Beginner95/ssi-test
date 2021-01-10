@@ -45,8 +45,14 @@ class CarModelController extends Controller
         return redirect()->route('car-models.index')->with('success', 'Модель обновлена');
     }
 
-    public function destroy($id)
+    public function destroy(CarModel $carModel): RedirectResponse
     {
-        //
+        try {
+            $carModel->delete();
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('car-models.index')->with('success', 'Модель удалена');
     }
 }
