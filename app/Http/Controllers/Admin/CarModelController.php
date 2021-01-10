@@ -7,7 +7,6 @@ use App\Http\Requests\CarModelRequest;
 use App\Models\Brand;
 use App\Models\CarModel;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class CarModelController extends Controller
 {
@@ -32,14 +31,18 @@ class CarModelController extends Controller
         return redirect()->route('car-models.index')->with('success', 'Модель добавлена');
     }
 
-    public function edit($id)
+    public function edit(CarModel $carModel)
     {
-        //
+        $brands = Brand::get();
+
+        return view('admin.car_models.edit', compact('carModel', 'brands'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CarModel $carModel, CarModelRequest $request): RedirectResponse
     {
-        //
+        $carModel->update($request->only(['brand_id', 'name']));
+
+        return redirect()->route('car-models.index')->with('success', 'Модель обновлена');
     }
 
     public function destroy($id)
