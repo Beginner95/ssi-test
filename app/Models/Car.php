@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Car extends Model
 {
@@ -25,4 +27,17 @@ class Car extends Model
     {
         return $this->hasOne(CarModel::class, 'id', 'car_model_id');
     }
+
+    public static function uploadImage(Request $request, $image = null)
+    {
+        if ($request->hasFile('file')) {
+            if ($image) {
+                Storage::delete($image);
+            }
+
+            return $request->file('file')->store("");
+        }
+        return null;
+    }
+
 }
