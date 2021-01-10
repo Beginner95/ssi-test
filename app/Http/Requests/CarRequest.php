@@ -15,11 +15,11 @@ class CarRequest extends FormRequest
     {
         return [
             'car_model_id' => 'required|integer',
-            'year_manufacture' => 'required',
+            'year_manufacture' => 'required|date',
             'national_number' => 'required',
             'color' => 'required',
             'transmission' => 'required',
-            'rental_price' => 'required',
+            'rental_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'file' => 'nullable|image'
         ];
     }
