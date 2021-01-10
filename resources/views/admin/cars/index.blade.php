@@ -47,7 +47,7 @@
                                 <tr>
                                     <td>
                                         <img
-                                             src="@if (empty($car->file)){{ asset('/no-image.png') }}@else{{ $car->file }}@endif"
+                                             src="@if (empty($car->file)){{ asset('/no-image.png') }}@else{{ asset('/uploads/' . $car->file) }}@endif"
                                              alt=""
                                              class="img-size-64">
                                     </td>
