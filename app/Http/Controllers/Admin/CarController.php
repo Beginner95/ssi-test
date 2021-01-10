@@ -49,11 +49,20 @@ class CarController extends Controller
         $data['file'] = Car::uploadImage($request, $car->file);
         $car->update($data);
 
-        return redirect()->route('cars.index')->with('Автомобиль успешно обновлен');
+        return redirect()->route('cars.index')->with('success', 'Автомобиль успешно обновлен');
     }
 
-    public function destroy($id)
+    public function destroy(Car $car): RedirectResponse
     {
-        //
+        try {
+            $car->delete();
+            if ($car->getImage()) {
+                Storage::delete($car->file);
+            }
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('cars.index')->with('success', 'Автомобиль удален');
     }
 }
