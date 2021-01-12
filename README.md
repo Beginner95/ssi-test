@@ -32,7 +32,13 @@ sh ./build.sh
 sh ./run_project.sh
 exit
 ```
-По http://localhost проект должен запуститься.
+По адресу http://localhost проект должен запуститься.
+По адресу http://localhost/admin/login можно войти в административную часть проекта
+Данные для входа
+```
+login: admin@mail.ru
+password: admin
+```
 
 Возможные проблемы
 Если проект не запускается посмотреть занятость портов
