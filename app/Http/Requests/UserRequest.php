@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed email
+ * @property mixed password
+ */
 class UserRequest extends FormRequest
 {
     public function authorize(): bool

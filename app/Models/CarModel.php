@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @method static pluck(string $string, string $string1)
+ * @method static create(array $only)
+ * @method static paginate(int $int)
+ */
 class CarModel extends Model
 {
     use HasFactory;

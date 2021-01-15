@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @method static create(array $data)
+ * @method static paginate(int $int)
+ */
 class Car extends Model
 {
     use HasFactory;
